@@ -191,7 +191,6 @@ namespace PostMaster
 
             // Toggle: when false, facility capacities/sorting are forced to vanilla.
             bool changeCapacity = settings.ChangeCapacity;
-            bool moreDeliveries = settings.MoreDeliveries;
 
             // Clamp user inputs defensively.
             var vanMailPercent = math.clamp(settings.PostVanMailLoadPercentage, 100, 500);
@@ -216,7 +215,7 @@ namespace PostMaster
             int totalPostTruckCapacity = 0;
 
 #if DEBUG
-            Mod.s_Log.Info($"PostMasterSystem.OnUpdate: {facilityCount} post facilities (MoreDeliveries = {moreDeliveries})");
+            Mod.s_Log.Info($"PostMasterSystem.OnUpdate: {facilityCount} post facilities");
 #endif
 
             foreach (Entity postEntity in postEntities)

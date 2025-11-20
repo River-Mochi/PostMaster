@@ -7,7 +7,8 @@ namespace PostMaster
     using Colossal;
 
     /// <summary>
-    /// English localization source for PostMaster [PM].</summary>
+    /// English localization source for PostMaster [PM].
+    /// </summary>
     public sealed class LocaleEN : IDictionarySource
     {
         private readonly Setting m_Setting;
@@ -54,7 +55,7 @@ namespace PostMaster
 
                 // ---- Post Office ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_GetLocalMail)),
-                    "Magic local mail top-up" },
+                    "Fix low Local mail" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PO_GetLocalMail)),
                     "When enabled, post offices \"magic\" in extra local mail if their storage is too low. "
                     + "This does not spawn vans — the mail just appears in the building so it can be processed." },
@@ -71,7 +72,7 @@ namespace PostMaster
 
                 // Global overflow toggle (PO + PSF)
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.FixMailOverflow)),
-                    "Fix mail overflow (magic cleanup)" },
+                    "Fix mail overflow" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.FixMailOverflow)),
                     "When enabled, post offices and sorting facilities perform a small \"magic\" cleanup once "
                     + "their overflow thresholds are reached: excess stored mail is treated as delivered and removed, "
@@ -80,24 +81,13 @@ namespace PostMaster
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_OverflowPercentage)),
                     "Post office overflow threshold" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PO_OverflowPercentage)),
-                    "When total mail at post offices reaches this percentage of capacity, overflow handling is triggered. "
-                    + "With the default 90%, nothing happens until a post office is nearly full." },
+                    "When total mail at post offices reaches this percentage of capacity, overflow handling is triggered." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_OverflowPercentage)),
                     "Sorting overflow threshold" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_OverflowPercentage)),
                     "When total mail at sorting facilities reaches this percentage of capacity, "
-                    + "overflow handling is triggered. With the default 90%, only very full facilities are touched." },
-
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.MoreDeliveries)),
-                    "Make more deliveries if needed" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.MoreDeliveries)),
-                    "Lets PostMaster be more eager about deliveries when needed. The intent is that if a postal building "
-                    + "is holding a backlog of local mail and still has free post vans available, it can request extra "
-                    + "delivery trips earlier than vanilla, helping post offices empty out instead of sitting nearly full. "
-                    + "If all vans are already in use, this toggle does nothing until a van becomes available again and "
-                    + "the game behaves like vanilla. (In the current build this option prepares the behavior and may not "
-                    + "yet change deliveries.)" },
+                    + "overflow handling is triggered." },
 
                 // ---- Post Vans & Trucks ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ChangeCapacity)),

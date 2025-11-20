@@ -223,18 +223,6 @@ namespace PostMaster
             set;
         }
 
-        /// <summary>
-        /// Extra deliveries toggle: allow post offices to be more eager
-        /// about deliveries when needed and when vans are free.
-        /// (Currently UI-only until wired into the main system.)
-        /// </summary>
-        [SettingsUISection(kActionsTab, PostOfficeGroup)]
-        public bool MoreDeliveries
-        {
-            get;
-            set;
-        }
-
         // --------------------------------------------------------------------
         // ACTIONS TAB: POST VAN OPTIONS (second)
         // --------------------------------------------------------------------
@@ -447,28 +435,26 @@ namespace PostMaster
         /// </summary>
         public override void SetDefaults()
         {
-            // Post offices: auto-get local mail when low (magic top-up).
+            // Post offices: fix low local mail via magic top-up.
             PO_GetLocalMail = true;
             PO_GettingThresholdPercentage = 2;
             PO_GettingPercentage = 15;
 
             // Global overflow fix for PO + sorting (magic cleanup).
-            // Default thresholds: 90% so nothing happens until buildings are nearly full.
             FixMailOverflow = true;
-            PO_OverflowPercentage = 90;
-            PSF_OverflowPercentage = 90;
+            PO_OverflowPercentage = 80;
+            PSF_OverflowPercentage = 80;
 
-            // Sorting facilities: auto-get unsorted mail when low (magic top-up).
+            // Sorting facilities: magic unsorted mail top-up when low.
             PSF_GetUnsortedMail = true;
-            PSF_GettingThresholdPercentage = 2;
-            PSF_GettingPercentage = 15;
+            PSF_GettingThresholdPercentage = 5;   // default: 5%
+            PSF_GettingPercentage = 20;           // default: fetch 20%
 
             PSF_SortingSpeedPercentage = 100;
             PSF_StorageCapacityPercentage = 100;
 
             // Capacities enabled by default.
             ChangeCapacity = true;
-            MoreDeliveries = true; // recommended: allow extra deliveries when needed (future behavior)
             PostVanMailLoadPercentage = 100;
             PostVanFleetSizePercentage = 100;
             TruckCapacityPercentage = 100;
@@ -485,10 +471,8 @@ namespace PostMaster
             PO_GettingPercentage = 15;
 
             FixMailOverflow = false;
-            // Thresholds kept high so that if player later turns this on under "vanilla" preset,
-            // cleanup only kicks in when buildings are nearly full.
-            PO_OverflowPercentage = 90;
-            PSF_OverflowPercentage = 90;
+            PO_OverflowPercentage = 80;
+            PSF_OverflowPercentage = 80;
 
             PSF_GetUnsortedMail = false;
             PSF_GettingThresholdPercentage = 2;
@@ -498,7 +482,6 @@ namespace PostMaster
             PSF_StorageCapacityPercentage = 100;
 
             ChangeCapacity = false;
-            MoreDeliveries = false;
             PostVanMailLoadPercentage = 100;
             PostVanFleetSizePercentage = 100;
             TruckCapacityPercentage = 100;
