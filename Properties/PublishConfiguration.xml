@@ -4,29 +4,30 @@
   <!--Name of the mod to display to players-->
   <DisplayName Value="Magic Mail" />
   <!--Short description of the mod-->
-  <ShortDescription Value="Post office mail fixes, tweaks, and capacity controls." />
+  <ShortDescription Value="Post office fixes, mail tweaks, and capacity controls." />
   <!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
   <LongDescription>
 ## Magic Mail [MM]
 
-- Mail System Control of post offices, sorting facilities, and post-vans.
-- All sliders and toggles are optional and can be reset to game defaults (vanilla) or to a recommended quick-start
-preset.
-- MM also provides some 'magic' fixes for issues with the mail system (until they are fixed by CO)
+- Control post offices, post-vans, sorting facilities, and post-trucks.
+- All sliders and toggles are optional
+- Reset to game defaults (vanilla) or to a quick-start preset.
+- Provides some 'magic' fixes for the mail system.
 
 
-### Features
+### How to Use
 
-- Quick Start Button - 1-Click, just set it and forget it to apply the recommended defaults.
-- Adjust **post-van mail load**, **post-van fleet size**, and **post-truck fleet size**.
-- Boost **sorting speed** and **sorting storage capacity** for sorting facilities.
-- **Fix low amount** of Local mail at post offices by "magically" topping up Local Mail when storage
+- **Quick Start Button** - 1-Click, just set it and forget it (applies recommended defaults).
+- Adjust post-van **mail load**, post-van **fleet size**, and post-truck **fleet size.**
+- **Boost speed** and storage capacity for sorting facilities.
+- Simple city-wide **mail statistics** and recent activity in the options menu.
+
+
+- **Fix low amount** of Local mail at post offices by magically topping up Local Mail when storage
   drops below a certain amount (you can choose).
-- **Fix low Unsorted mail** at sorting facilities to keep the sorting active.
-- **Fix mail overflow** by trimming overfilled mail buffers at post offices and sorting
-  facilities so they do not remain blocked forever.
-- Show simple city-wide mail statistics and recent activity in the options UI.
-
+- **Fix low unsorted mail** at sorting facilities to keep the sorting active.
+- **Fix mail overflow** by trimming overfilled mail buffers so they don't remain blocked forever.
+- This is a workaround solution until CO fixes the mail transfer process.
 
 ### 5 Languages
 
@@ -49,7 +50,7 @@ preset.
 - Inspired by Infixo's original Postal Helper
 - BugsyG - testing
 
-tags: mail bug fixes, post van, post truck, delivery
+tags: broken mail bug fixes, post van, post truck, delivery
 
   </LongDescription>
   <!--Thumbnail-->
@@ -65,7 +66,7 @@ tags: mail bug fixes, post van, post truck, delivery
   <!--Tag, can be set multiple times-->
   <Tag Value="Code Mod" />
   <!--Link to the forum post where the mod can be discussed-->
-  <ForumLink Value="" />
+  <ForumLink Value="https://forum.paradoxplaza.com/forum/threads/magic-mail.1877962/" />
   <!--Version of the mod-->
   <ModVersion Value="1.0.4" />
   <!--Recommended version of the base game to use the mod-->
