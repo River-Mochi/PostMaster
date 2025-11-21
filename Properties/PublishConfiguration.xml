@@ -10,7 +10,7 @@
 ## Magic Mail [MM]
 
 - MPM gives more control over post offices, sorting facilities, and post-vans.
-- It also provides a couple "Magic" fixes for issues with the mail system until CO fixes it.
+- It also provides a some "magic" fixes for issues with the mail system (until CO/IF fixes it).
 
 ### Features
 
@@ -27,7 +27,10 @@ All sliders and toggles are optional and can be reset to game defaults (vanilla)
 preset.
 
 ### 4 Languages
-- English, French, Spanish, Simplified Chinese
+
+- Français French, Deutsch German, Español Spanish,
+- 简体中文 (Simplified Chinese)
+
 
 ### Compatibility
 - Safe to remove at any time; postal facilities will fall back to the
@@ -48,7 +51,7 @@ preset.
   <!--Link to the forum post where the mod can be discussed-->
   <ForumLink Value="" />
   <!--Version of the mod-->
-  <ModVersion Value="1.0.2" />
+  <ModVersion Value="1.0.3" />
   <!--Recommended version of the base game to use the mod-->
   <GameVersion Value="1.4.*" />
   <!--Dependency for the mod, can be set multiple times-->

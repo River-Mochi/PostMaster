@@ -118,27 +118,27 @@ namespace MagicMail
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GetUnsortedMail)), "Fix low unsorted mail" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_GetUnsortedMail)),
-                    "When enabled, \"magic\" extra unsorted mail appears in Sorting facilities if storage supplies get too low.\n " +
-                    "This keeps sorting active without waiting for deliveries.\n" +
-                    "Temp fix for current bug where Sorting facilities don't get enough mail if Cargo harbor is present" },
+                    "Sorting Facility: when enabled, some \"magic\" unsorted mail appears if storage supplies get too low.\n " +
+                    "This keeps sorting buildings active without waiting for deliveries.\n" +
+                    "This is a temp fix for current bug where Sorting facilities don't get enough mail if Cargo harbor is present" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GettingThresholdPercentage)), "Unsorted mail threshold" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_GettingThresholdPercentage)),
-                    "If unsorted mail goes below this percentage of capacity, the facility magically pulls in the \"fetch\" amount of unsorted mail." },
+                    "Sorting Facility: if unsorted mail goes below this percentage of capacity, some unsorted mail is magically \"fetched\" \n" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GettingPercentage)), "Unsorted mail fetch amount" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_GettingPercentage)),
-                    "Additional mail to add when fetching unsorted mail (magic top-up).\n" +
+                    "Sorting Facility: additional mail to add when fetching unsorted mail (magic top-up).\n" +
                     "Percentage of max storage capacity." },
 
-                // ---- Reset ----
+                // ---- RESET BUTTONS ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetToVanilla)), "Reset to game defaults" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.ResetToVanilla)),
-                    "Restore all postal settings to the game’s original behaviour (vanilla)." },
+                    "Restore all postal settings to the game’s original default behaviour (vanilla)." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetToRecommend)), "Reset to Recommended" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.ResetToRecommend)),
-                    "Quick Start: apply Recommended postal settings." },
+                    "Quick Start: apply recommended postal settings." },
 
                 // ---- Status tab ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.StatusFacilitySummary)), "" },

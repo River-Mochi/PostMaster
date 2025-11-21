@@ -455,13 +455,13 @@ namespace MagicMail
 
             // Capacities enabled by default.
             ChangeCapacity = true;
-            PostVanMailLoadPercentage = 100;
+            PostVanMailLoadPercentage = 200;
             PostVanFleetSizePercentage = 100;
             TruckCapacityPercentage = 100;
         }
 
         /// <summary>
-        /// Restores a configuration similar to vanilla behavior.
+        /// Restore settings similar to game defaults (vanilla).
         /// </summary>
         public void SetToVanilla()
         {

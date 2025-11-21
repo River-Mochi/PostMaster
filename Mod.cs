@@ -80,14 +80,14 @@ namespace MagicMail
             AddLocaleSource("en-US", new LocaleEN(setting));
 
             // Ready for future locales (uncomment once you add the files):
-                AddLocaleSource("de-DE", new LocaleDE(setting));
-                AddLocaleSource("fr-FR",  new LocaleFR(setting));
-                AddLocaleSource("es-ES",  new LocaleES(setting));
+            AddLocaleSource("de-DE", new LocaleDE(setting));
+            AddLocaleSource("fr-FR", new LocaleFR(setting));
+            AddLocaleSource("es-ES", new LocaleES(setting));
             // AddLocaleSource("it-IT",  new LocaleIT(setting));
             // AddLocaleSource("ja-JP",  new LocaleJA(setting));
             // AddLocaleSource("ko-KR",  new LocaleKO(setting));
             // AddLocaleSource("pt-BR",  new LocalePT_BR(setting));
-                AddLocaleSource("zh-HANS", new LocaleZH_CN(setting));
+            AddLocaleSource("zh-HANS", new LocaleZH_CN(setting));
             // AddLocaleSource("zh-HANT", new LocaleZH_HANT(setting));
 
             // Load persisted settings or create defaults on first run.
