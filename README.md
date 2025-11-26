@@ -103,8 +103,6 @@ When enabled, the overflow fixer looks at the **total** of all three.
 In practical terms, this treats some stored mail as “delivered/processed” so the building
 can start working again instead of staying clogged forever.
 
-> 🔧 This is also “magic”: some mail is deleted to prevent permanent congestion.
-
 ---
 
 ## 4. Vans, trucks, and sorting power
@@ -208,7 +206,14 @@ is already running fine without them.
 - Post truck fleet size slider.  
 - Sorting speed slider.  
 - Sorting storage capacity slider.  
-- Status / City mail information (purely observational).
+- Status / City mail information
+
+---
+
+### 8 Languages
+
+- Français French, Deutsch German, Español Spanish,  Italiano Italian
+- English, 简体中文 (Simplified Chinese), 한국어 Korean, Português Brazilian
 
 ---
 
