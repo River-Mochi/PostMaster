@@ -15,18 +15,13 @@ namespace MagicMail
     /// Settings definition and UI bindings for MagicMail [MM].</summary>
     [FileLocation("ModsSettings/MagicMail/MagicMail")]
     [SettingsUITabOrder(
-        kActionsTab,
-        kStatusTab,
-        kAboutTab)]
+        kActionsTab, kStatusTab, kAboutTab)]
     [SettingsUIGroupOrder(
         ResetGroup,
-        PostOfficeGroup,
-        PostVanGroup,
+        PostOfficeGroup, PostVanGroup,
         PostSortingFacilityGroup,
-        StatusSummaryGroup,
-        StatusActivityGroup,
-        kAboutInfoGroup,
-        kAboutLinksGroup)]
+        StatusSummaryGroup, StatusActivityGroup,
+        kAboutInfoGroup, kAboutLinksGroup)]
     [SettingsUIShowGroupName(
         PostOfficeGroup,
         PostSortingFacilityGroup,
@@ -63,7 +58,7 @@ namespace MagicMail
         // ---- LINKS ----
 
         private const string kUrlParadox =
-            "https://mods.paradoxplaza.com/uploaded?orderBy=desc&sortBy=best&time=alltime";
+            "https://mods.paradoxplaza.com/authors/kimosabe1/cities_skylines_2?games=cities_skylines_2&orderBy=desc&sortBy=best&time=alltime";
         private const string kUrlDiscord =
             "https://discord.gg/HTav7ARPs2";
 
