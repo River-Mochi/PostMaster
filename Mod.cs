@@ -89,6 +89,7 @@ namespace MagicMail
             AddLocaleSource("pt-BR", new LocalePT_BR(setting));
             AddLocaleSource("zh-HANS", new LocaleZH_CN(setting));
             // AddLocaleSource("zh-HANT", new LocaleZH_HANT(setting));
+            AddLocaleSource("th-TH", new LocaleTH(setting));
 
             // Load persisted settings or create defaults on first run.
             AssetDatabase.global.LoadSettings(ModId, setting, new Setting(this));
