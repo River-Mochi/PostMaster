@@ -36,7 +36,8 @@ Currently, cargo shipyards could be shipping out most of the unsorted mail leavi
 ### 8 Languages
 
 - Français French, Deutsch German, Español Spanish,  Italiano Italian
-- English, 简体中文 (Simplified Chinese), 한국어 Korean, Português Brazilian
+- English, 简体中文 Simplified Chinese, 한국어 Korean, Português Brazilian
+- WIP: Thai ภาษาไทย
 
 
 ### Compatibility
@@ -75,14 +76,14 @@ tags: unreliable mail service, broken mail bug fixes, post van, post truck, deli
   <!--Link to the forum post where the mod can be discussed-->
   <ForumLink Value="https://forum.paradoxplaza.com/forum/threads/magic-mail.1877962/" />
   <!--Version of the mod-->
-  <ModVersion Value="1.0.9" />
+  <ModVersion Value="1.1.0" />
   <!--Recommended version of the base game to use the mod-->
   <GameVersion Value="1.4.*" />
   <!--Dependency for the mod, can be set multiple times-->
   <Dependency Id="" />
   <!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
   <ChangeLog>
-- fix links
+- Adds Thai Language
   </ChangeLog>
   <!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
   <ExternalLink Type="discord" Url="https://discord.gg/HTav7ARPs2" />
