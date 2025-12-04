@@ -29,7 +29,7 @@ namespace MagicMail
             return new Dictionary<string, string>
             {
                 // Mod title
-                { m_Setting.GetSettingsLocaleID(), "Magic Mail [MM]" },
+                { m_Setting.GetSettingsLocaleID(), "魔法邮政 [MM]" },
 
                 // Tabs
                 { m_Setting.GetOptionTabLocaleID(Setting.kActionsTab), "操作" },
@@ -38,150 +38,157 @@ namespace MagicMail
 
                 // Groups (Actions tab)
                 { m_Setting.GetOptionGroupLocaleID(Setting.PostOfficeGroup),          "邮局" },
-                { m_Setting.GetOptionGroupLocaleID(Setting.PostVanGroup),             "邮车与卡车" },
+                { m_Setting.GetOptionGroupLocaleID(Setting.PostVanGroup),             "邮政货车与卡车" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.PostSortingFacilityGroup), "分拣中心" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.ResetGroup),               "重置" },
 
                 // Groups (Status tab)
-                { m_Setting.GetOptionGroupLocaleID(Setting.StatusSummaryGroup), "城市总览" },
-                { m_Setting.GetOptionGroupLocaleID(Setting.StatusActivityGroup), "最近更新" },
+                { m_Setting.GetOptionGroupLocaleID(Setting.StatusSummaryGroup),  "城市扫描" },
+                { m_Setting.GetOptionGroupLocaleID(Setting.StatusActivityGroup), "上次更新" },
 
                 // Groups (About tab)
                 { m_Setting.GetOptionGroupLocaleID(Setting.kAboutInfoGroup),  "信息" },
                 { m_Setting.GetOptionGroupLocaleID(Setting.kAboutLinksGroup), "链接" },
 
-                // ---- Post Office ----
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_GetLocalMail)), "修复本地邮件不足" },
+              // ---- Post Office ----
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_GetLocalMail)), "修复本地邮件过低" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PO_GetLocalMail)),
-                    "启用后，如果仓储过低，会“魔法般”出现额外邮件。\n " +
-                    "不会生成额外的邮车——像魔法，但是真实生效。" },
+                    "启用后，如果本地邮件过低，会自动生成少量邮件。\n " +
+                    "不会生成额外的邮车；就像魔法一样，但是真的 :)" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_GettingThresholdPercentage)), "本地邮件阈值" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PO_GettingThresholdPercentage)),
-                    "如果本地邮件低于你设定的这个百分比，\n " +
-                    "邮局会自动拉入更多本地邮件。\n" +
-                    "以最大存储容量为基准的百分比。" },
+                    "当本地邮件低于你设定的百分比时，\n " +
+                    "邮局会自动补充更多本地邮件。\n" +
+                    "此阈值是建筑最大容量的百分比。\n" +
+                    "例如：<最大容量 = 100,000> 且 <阈值 = 5%>，\n" +
+                    "当本地邮件 < <5,000> 时，就会触发补邮件。" },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_GettingPercentage)), "本地邮件补充值" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_GettingPercentage)), "本地邮件补充量" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PO_GettingPercentage)),
-                    "进行本地邮件“魔法补货”时要添加的百分比。\n" +
-                    "如果原版最大值 = 10,000，设置为 20%，则会增加 2,000。" },
+                    "触发补货时要增加的本地邮件百分比（魔法“加满”）。\n" +
+                    "例如：若 vanilla 最大值 = <100,000> 且此项 = <10%>，\n" +
+                    "那么需要时会一次性补充 <10,000> 本地邮件。"},
 
                 // Global overflow toggle (PO + PSF)
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.FixMailOverflow)), "修复邮件溢出" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.FixMailOverflow)),
-                    "当邮件过多时，设施会执行一次小型的 **魔法** 清理。\n " +
-                    "多余的邮件会视为已投递并被移除。\n " +
-                    "这样可以防止建筑长期卡在“已满”状态。\n " +
-                    "关闭此选项可以保持纯原版行为。" },
+                    "当邮件过多时，设施会进行一次小型“魔法清理”。\n " +
+                    "多余的存储邮件会被视为已投递并删除。\n " +
+                    "这样可以避免设施一直被塞满、完全卡死。\n " +
+                    "关闭此选项可保持纯原版（vanilla）行为。" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_OverflowPercentage)), "邮局溢出阈值" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PO_OverflowPercentage)),
-                    "当某个邮局的邮件总量达到该百分比时，\n" +
-                    "模组会删除一部分存储邮件，将总量拉回到该水平。" },
+                    "当某个邮局的总邮件达到这个百分比时，模组会删除一部分存储邮件，\n" +
+                    "把总量压回到该百分比附近。" },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_OverflowPercentage)), "分拣溢出阈值" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_OverflowPercentage)), "分拣中心溢出阈值" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_OverflowPercentage)),
-                   "当分拣中心的邮件总量达到该百分比时，\n" +
-                   "模组会删除一部分存储邮件，将总量拉回到该水平。" },
+                   "当分拣设施的总邮件达到这个百分比时，模组会删除一部分存储邮件，\n" +
+                   "把总量压回到该百分比附近。" },
 
                 // ---- Post Vans & Trucks ----
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ChangeCapacity)), "修改运力" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ChangeCapacity)), "修改容量" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.ChangeCapacity)),
-                    "启用后可以修改邮车和卡车的容量。若关闭，\n" +
-                    "下面所有容量滑块会被隐藏，\n" +
-                    "游戏会使用原版数值，即使滑块上显示的是其他数值。" },
+                    "启用后才会修改货车/卡车的容量。\n" +
+                    "当此项关闭时，下方所有容量滑条都会被隐藏，\n" +
+                    "即使你之前改过数值，也会使用原版（游戏）的默认值。" },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PostVanMailLoadPercentage)), "邮车载重" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PostVanMailLoadPercentage)), "邮政货车载量" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PostVanMailLoadPercentage)),
-                    "控制每辆邮车可以携带多少邮件。\n" +
-                    "<100% = 原版载重。>" },
+                    "控制每辆邮政货车能装多少邮件。\n" +
+                    "<100% = 原版载量。>" },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PostVanFleetSizePercentage)), "邮车车队规模" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PostVanFleetSizePercentage)), "邮政货车车队规模" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PostVanFleetSizePercentage)),
-                    "控制每个邮政建筑可以拥有并派出的邮车数量。\n" +
+                    "控制每座邮政建筑能拥有并派出的邮政货车数量。\n" +
                     "<100% = 原版车队规模。>" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.TruckCapacityPercentage)), "邮政卡车车队规模" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.TruckCapacityPercentage)),
-                    "控制每个分拣中心（以及任何拥有邮政卡车的建筑）\n " +
-                    "可以拥有并派出的卡车数量。\n " +
+                    "控制每个分拣设施（以及任何带邮政卡车的建筑）\n " +
+                    "能拥有并派出的邮政卡车数量。\n " +
                     "<100% = 原版车队规模。>" },
 
                 // ---- Sorting Facility ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_SortingSpeedPercentage)), "分拣速度" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_SortingSpeedPercentage)),
-                    "应用于**分拣**设施的速度倍率。影响建筑的基础分拣速度。\n " +
+                    "分拣设施的速度倍率，作用于建筑的基础分拣速率。\n " +
                     "<100% = 原版>" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_StorageCapacityPercentage)), "分拣存储容量" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_StorageCapacityPercentage)),
-                    "控制**邮件存储**容量。\n " +
+                    "控制分拣设施的**邮件存储容量**。\n " +
                     "<100% = 原版>" },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GetUnsortedMail)), "修复未分拣邮件不足" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GetUnsortedMail)), "修复未分拣邮件过低" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_GetUnsortedMail)),
-                    "启用后，如果未分拣邮件储量过低，会魔法般补充一些未分拣邮件。\n " +
-                    "这样分拣建筑不用等待送货也能持续工作。\n" +
-                    "这是当前错误的临时修复：如果有货运港口存在，\n " +
-                    "分拣中心往往拿不到足够的邮件。" },
+                    "启用后，如果未分拣邮件太少，会“魔法”补一些未分拣邮件。\n " +
+                    "这样分拣建筑无需等车送货也能持续工作。\n" +
+                    "这是当前一个 bug 的临时修复：如果城市有货运港口，\n" +
+                    "分拣设施经常拿不到足够的邮件。" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GettingThresholdPercentage)), "未分拣邮件阈值" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_GettingThresholdPercentage)),
-                    "当未分拣邮件低于该容量百分比时，\n " +
-                    "会“魔法”拉入额外的未分拣邮件。\n" },
+                    "如果未分拣邮件低于总存储容量的这个低百分比，\n" +
+                    "就会“魔法”拉入一部分额外未分拣邮件。\n" },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GettingPercentage)), "未分拣邮件补充值" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GettingPercentage)), "未分拣邮件补充量" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_GettingPercentage)),
-                    "进行未分拣邮件“魔法补货”时要添加的数量。\n" +
-                    "以最大存储容量的百分比表示。" },
+                    "触发补货时要增加的未分拣邮件量（魔法“加满”）。\n" +
+                    "数值是最大存储容量的百分比。\n" +
+                    "例如：若原版最大 = 250,000 且此项 = 10%，\n" +
+                    "那么一次会补充 25,000 未分拣邮件。"
+                },
 
                 // ---- RESET BUTTONS ----
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetToVanilla)), "游戏默认值" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetToVanilla)), "游戏默认" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.ResetToVanilla)),
-                    "将所有设置恢复为游戏最初的默认行为（原版）。" },
+                    "把所有设置恢复为游戏最初的原版行为（vanilla）。" },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetToRecommend)), "推荐设置" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetToRecommend)), "推荐预设" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.ResetToRecommend)),
-                    "**快速开始**：应用所有推荐的邮政设置。\n" +
-                    "简单模式：一键完成！" },
+                    "**快速上手** —— 一键应用推荐的邮政设置。\n" +
+                    "休闲模式：点一次就搞定！" },
 
                 // ---- Status tab ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.StatusFacilitySummary)), "" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.StatusFacilitySummary)),
-                    "显示在上一次游戏更新中处理的邮局、邮车、分拣中心和邮政卡车数量\n " +
-                    "（大约每 45 分钟游戏时间更新一次）。" },
+                    "展示最近一次游戏更新中处理过的邮局、邮政货车、分拣设施\n" +
+                    "以及邮政卡车的汇总情况（大约每 45 分钟游戏时间更新一次）。" },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.StatusCityMailSummary)), "城市邮件" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.StatusCityMailSummary)), "每月邮件" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.StatusCityMailSummary)),
-                    "显示最近城市范围内的邮件流量。\n\n" +
-                     "**累积量** = 市民在一段时间内产生的邮件总量。\n" +
-                     "**处理量**   = 邮政网络实际处理的邮件量。\n\n" +
-                     "- 如果“处理量”经常大于“累积量”，说明邮政网络容量充足。\n " +
-                     "- 如果“累积量”长时间高于“处理量”，说明城市产生的邮件多于\n " +
-                     "系统可以处理的量；可以增加更多设施、车辆，或调整设置。" },
+                    "显示最近一段时间全城邮件的流量情况。\n\n" +
+                     "**Accumulated（累计）** = 市民产生了多少邮件。\n" +
+                     "**Processed（已处理）**   = 邮政网络实际处理了多少邮件。\n\n" +
+                     "- 如果“已处理”经常高于“累计”，说明你的邮政网络够用。\n " +
+                     "- 如果“累计”长期高于“已处理”，说明城市产出的邮件太多，\n " +
+                     "  当前网络吃不下；可以多建设施、加车或调整设置。"
+                },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.StatusLastActivity)), "最近活动" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.StatusLastActivity)), "活动记录" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.StatusLastActivity)),
-                    "统计在上一次更新中执行的邮件补货和溢出清理次数。" },
+                    "统计上一次更新中执行的补货次数和溢出清理次数。" },
 
                 // ---- About tab: info ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ModNameDisplay)), "模组" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.ModNameDisplay)),
-                    "此模组的显示名称。" },
+                    "此模组在游戏里显示的名称。" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ModVersionDisplay)), "版本" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.ModVersionDisplay)),
-                    "当前模组版本。" },
+                    "当前模组版本号。" },
 
                 // ---- About tab: links ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.OpenParadox)), "Paradox" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.OpenParadox)),
-                    "在浏览器中打开 **Magic Mail** 以及其他模组的 **Paradox** 页面。" },
+                    "在浏览器中打开 **Magic Mail** 以及作者其它模组的 Paradox 页面。" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.OpenDiscord)), "Discord" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.OpenDiscord)),
-                    "在浏览器中打开 **Discord** 反馈频道。" },
+                    "在浏览器中打开 **Discord** 反馈与交流频道。" },
             };
         }
 

@@ -453,8 +453,8 @@ namespace MagicMail
         {
             // Post offices: auto-get local mail when low (magic top-up).
             PO_GetLocalMail = true;
-            PO_GettingThresholdPercentage = 2;
-            PO_GettingPercentage = 15;
+            PO_GettingThresholdPercentage = 5;
+            PO_GettingPercentage = 10;
 
             // Global overflow fix for PO + sorting (magic cleanup).
             FixMailOverflow = true;
@@ -464,9 +464,9 @@ namespace MagicMail
             // Sorting facilities: auto-get unsorted mail when low (magic top-up).
             PSF_GetUnsortedMail = true;
             PSF_GettingThresholdPercentage = 5;
-            PSF_GettingPercentage = 20;
+            PSF_GettingPercentage = 10;
 
-            PSF_SortingSpeedPercentage = 150;
+            PSF_SortingSpeedPercentage = 200;
             PSF_StorageCapacityPercentage = 100;
 
             // Capacities enabled by default.

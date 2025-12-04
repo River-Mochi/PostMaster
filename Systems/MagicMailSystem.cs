@@ -97,22 +97,22 @@ namespace MagicMail
                 return "City mail stats not available yet. Open a city and let the simulation run.";
             }
 
-            // Slightly widened spacing after "Monthly".
+            // Status message
             return
-                $"Monthly       {s_LastCityAccumulatedMail:N0} accumulated | " +
+                $"  {s_LastCityAccumulatedMail:N0} accumulated  |  " +
                 $"{s_LastCityProcessedMail:N0} processed";
         }
 
         /// <summary>
         /// Controls how often the system updates for each phase.</summary>
+        private const int UpdatesPerDay = 256;   // Increase this to update more frequently.
         public override int GetUpdateInterval(SystemUpdatePhase phase)
         {
 #if DEBUG
             // Matching the vanilla PostFacilityAISystem interval for easier debugging.
             return 256;
 #else
-            // 32 updates per day ≈ once per 45 in-game minutes.
-            return 262144 / 32;
+            return 262144 / UpdatesPerDay;   // 256 updates per day ≈ once per 5.625 in-game minutes.
 #endif
         }
 

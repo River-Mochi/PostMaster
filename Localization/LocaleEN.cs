@@ -53,19 +53,23 @@ namespace MagicMail
                 // ---- Post Office ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_GetLocalMail)), "Fix Low Local mail" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PO_GetLocalMail)),
-                    "When enabled and if the storage gets too low, extra mail appears.\n " +
+                    "If enabled, then a small amount of mail appears if the mail ever gets too low.\n " +
                     "Does not spawn extra vans; it's like magic...but real :)" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_GettingThresholdPercentage)), "Local mail threshold" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PO_GettingThresholdPercentage)),
-                    "If local mail goes below this percentage that you choose, then,\n " +
-                    "the post office pulls in more local mail.\n" +
-                    "It is the percentage of max storage." },
+                    "If local mail goes below this percentage (that you choose), it\n " +
+                    "triggers the post office to pull in more local mail.\n" +
+                    "This is a percentage of the building max storage.\n" +
+                    "E.g., if <max storage = 100,000> and <threshold = 5%>,\n" +
+                    "when local mail < <5,000> then more mail is fetched"
+                },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PO_GettingPercentage)), "Local mail fetch amount" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PO_GettingPercentage)),
                     "Percentage to add when fetching local mail (magic top-up).\n" +
-                    "if vanilla max = 10,000, and this is set to 20%, then 2000 is added. "},
+                    "If vanilla max = <100,000> and this is set to <10%>\n" +
+                    "then <10,000> is added when needed."},
 
                 // Global overflow toggle (PO + PSF)
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.FixMailOverflow)), "Fix mail overflow" },
@@ -127,12 +131,15 @@ namespace MagicMail
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GettingThresholdPercentage)), "Unsorted mail threshold" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_GettingThresholdPercentage)),
-                    "If unsorted mail goes below this percentage of capacity, some extra unsorted mail is magically fetched. \n" },
+                    "If unsorted mail goes below this low percentage of total storage capacity\n" +
+                    "then some extra unsorted mail is magically fetched. \n" },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.PSF_GettingPercentage)), "Unsorted mail fetch amount" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.PSF_GettingPercentage)),
                     "The additional mail to add when fetching unsorted mail (magic top-up).\n" +
-                    "Amout is a percentage of max storage capacity." },
+                    "Amount is a percentage of max storage capacity.\n" +
+                    "If vanilla max = 250,000 and this is set to 10%, then 25,000 is added. "
+                },
 
                 // ---- RESET BUTTONS ----
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ResetToVanilla)), "Game defaults" },
@@ -149,7 +156,7 @@ namespace MagicMail
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.StatusFacilitySummary)),
                     "Summary of post offices, post vans, sorting facilities, and post trucks processed in the last game update (~every 45 min in-game)." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.StatusCityMailSummary)), "City mail" },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.StatusCityMailSummary)), "Monthly Mail" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.StatusCityMailSummary)),
                     "Shows recent city-wide mail flow.\n\n" +
                      "**Accumulated** = how much mail citizens generated.\n" +
