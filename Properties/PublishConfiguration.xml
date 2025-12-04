@@ -6,9 +6,9 @@
   <!--Short description of the mod-->
   <ShortDescription Value="Post office fixes, mail tweaks, and capacity controls." />
   <!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
-  <LongDescription>## Magic Mail
+  <LongDescription>### Magic Mail
 
-### UPDATED for 1.5* game patch!
+**UPDATED for 1.5* game patch!**
 
 - Control post offices, post-vans, sorting facilities, and post-trucks.
 - Also provides some auto 'magic' fixes for the mail system.
@@ -82,8 +82,8 @@ tags: unreliable mail service, broken mail bug fixes, post van, post truck, deli
   <!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
   <ChangeLog>
 - updated for 1.5.* game patch
-- 
-- adjusted Recommended values slightly
+- faster application of capacity changes
+- adjusted recommended values slightly
   </ChangeLog>
   <!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
   <ExternalLink Type="discord" Url="https://discord.gg/HTav7ARPs2" />
