@@ -82,7 +82,7 @@ tags: unreliable mail service, broken mail bug fixes, post van, post truck, deli
   <!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
   <ChangeLog>
 - updated for 1.5.* game patch
-- Internal refactor: split systems to improve capacity sliders, and keep mail scans light/infrequent for performance (~ every 45 game minutes).
+- Internal refactor: split systems to improve capacity sliders, while mail scans stay low-frequency for good performance (~ every 45 game minutes).
   </ChangeLog>
   <!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
   <ExternalLink Type="discord" Url="https://discord.gg/HTav7ARPs2" />

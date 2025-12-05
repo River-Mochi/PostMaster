@@ -53,15 +53,15 @@ namespace MagicMail
             bool changeCapacity = settings.ChangeCapacity;
 
             // Clamp sliders to safe ranges.
-            int newVanMailPercent =
+            var newVanMailPercent =
                 math.clamp(settings.PostVanMailLoadPercentage, 100, 500);
-            int newVanFleetPercent =
+            var newVanFleetPercent =
                 math.clamp(settings.PostVanFleetSizePercentage, 50, 300);
-            int newTruckFleetPercent =
+            var newTruckFleetPercent =
                 math.clamp(settings.TruckCapacityPercentage, 50, 300);
-            int newSortingSpeedPercent =
+            var newSortingSpeedPercent =
                 math.clamp(settings.PSF_SortingSpeedPercentage, 50, 500);
-            int newSortingStoragePercent =
+            var newSortingStoragePercent =
                 math.clamp(settings.PSF_StorageCapacityPercentage, 50, 300);
 
             // When ChangeCapacity is OFF, we logically force everything back to 100%.
@@ -92,14 +92,14 @@ namespace MagicMail
 
             if (vansChanged)
             {
-                float mailScale =
+                var mailScale =
                     newVanMailPercent / (float)m_LastVanMailPercent;
 
                 foreach (RefRW<PostVanData> van in SystemAPI.Query<RefRW<PostVanData>>())
                 {
                     ref PostVanData vanData = ref van.ValueRW;
 
-                    int newCapacity = (int)math.round(vanData.m_MailCapacity * mailScale);
+                    var newCapacity = (int)math.round(vanData.m_MailCapacity * mailScale);
                     vanData.m_MailCapacity = math.max(1, newCapacity);
                 }
 
@@ -110,13 +110,13 @@ namespace MagicMail
 
             if (facilityChanged)
             {
-                float vanFleetScale =
+                var vanFleetScale =
                     newVanFleetPercent / (float)m_LastVanFleetPercent;
-                float truckFleetScale =
+                var truckFleetScale =
                     newTruckFleetPercent / (float)m_LastTruckFleetPercent;
-                float sortingSpeedScale =
+                var sortingSpeedScale =
                     newSortingSpeedPercent / (float)m_LastSortingSpeedPercent;
-                float sortingStorageScale =
+                var sortingStorageScale =
                     newSortingStoragePercent / (float)m_LastSortingStoragePercent;
 
                 foreach (RefRW<PostFacilityData> facility in SystemAPI.Query<RefRW<PostFacilityData>>())

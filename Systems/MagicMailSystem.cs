@@ -20,7 +20,7 @@ namespace MagicMail
     /// Simulation system that runs the "magic" mail behaviour:
     /// - Local/unsorted mail top-ups
     /// - Optional overflow cleanup
-    /// - Status counters & city-wide mail stats
+    /// - Status counters & city-wide mail stats (read by Setting.cs).
     /// </summary>
     public partial class MagicMailSystem : GameSystemBase
     {
@@ -33,7 +33,7 @@ namespace MagicMail
         internal static int s_LastCityAccumulatedMail;
         internal static int s_LastCityProcessedMail;
 
-        // ---- STATUS FIELDS (read by Settings.Status* properties) ----
+        // ---- STATUS FIELDS (read by Setting.Status* properties) ----
 
         internal static int s_LastFacilityCount;
         internal static int s_LastPostOfficeCount;
@@ -43,53 +43,6 @@ namespace MagicMail
         internal static int s_LastPostOfficeGets;
         internal static int s_LastSortingGets;
         internal static int s_LastOverflowClamps;
-
-        /// <summary>
-        /// Returns a short summary of the last facility scan.</summary>
-        public static string GetStatusSummary()
-        {
-            if (s_LastFacilityCount == 0)
-            {
-                return "No postal facilities processed yet. Open a city and let the simulation run.";
-            }
-
-            return
-                $"{s_LastPostOfficeCount} post offices | " +
-                $"{s_LastPostVanCapacityTotal} post-vans | " +
-                $"{s_LastSortingFacilityCount} sort buildings | " +
-                $"{s_LastPostTruckCapacityTotal} post trucks";
-        }
-
-        /// <summary>
-        /// Returns a short summary of the last update activity.</summary>
-        public static string GetStatusActivity()
-        {
-            if (s_LastFacilityCount == 0)
-            {
-                return "No activity recorded yet.";
-            }
-
-            return
-                $"{s_LastPostOfficeGets} local-mail pulls | " +
-                $"{s_LastSortingGets} unsorted-mail pulls | " +
-                $"{s_LastOverflowClamps} overflow cleanups";
-        }
-
-        /// <summary>
-        /// Returns a summary of city-wide mail accumulation/processing
-        /// from the vanilla MailAccumulationSystem.</summary>
-        public static string GetStatusCityMail()
-        {
-            if (s_LastCityAccumulatedMail == 0 && s_LastCityProcessedMail == 0)
-            {
-                return "City mail stats not available yet. Open a city and let the simulation run.";
-            }
-
-            // UI collapses extra spaces; this is just a simple "A | B" display.
-            return
-                $"  {s_LastCityAccumulatedMail:N0} accumulated  |  " +
-                $"{s_LastCityProcessedMail:N0} processed";
-        }
 
         /// <summary>
         /// Controls how often the system updates for each phase.</summary>

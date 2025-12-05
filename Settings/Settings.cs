@@ -5,7 +5,9 @@ namespace MagicMail
 {
     using System;
     using Colossal.IO.AssetDatabase;
+    using Colossal.Localization;
     using Game.Modding;
+    using Game.SceneFlow;
     using Game.Settings;
     using Game.UI;
     using Unity.Entities;
@@ -61,6 +63,14 @@ namespace MagicMail
             "https://mods.paradoxplaza.com/authors/kimosabe1/cities_skylines_2?games=cities_skylines_2&orderBy=desc&sortBy=best&time=alltime";
         private const string kUrlDiscord =
             "https://discord.gg/HTav7ARPs2";
+
+        // ---- Localization keys for Status text ----
+        private const string StatusNoFacilitiesKey = "MM_STATUS_NO_FACILITIES";
+        private const string StatusNoActivityKey = "MM_STATUS_NO_ACTIVITY";
+        private const string StatusSummaryKey = "MM_STATUS_SUMMARY";
+        private const string StatusActivityKey = "MM_STATUS_ACTIVITY";
+        private const string StatusCityMailNotReadyKey = "MM_STATUS_CITY_MAIL_NOT_READY";
+        private const string StatusCityMailKey = "MM_STATUS_CITY_MAIL";
 
         /// <summary>
         /// Internal flag used to avoid resetting options on every load.</summary>
@@ -364,20 +374,75 @@ namespace MagicMail
         }
 
         // --------------------------------------------------------------------
-        // STATUS TAB
+        // STATUS TAB (localized with keys, data from MagicMailSystem)
         // --------------------------------------------------------------------
 
         [SettingsUISection(kStatusTab, StatusSummaryGroup)]
-        public string StatusFacilitySummary =>
-            MagicMailSystem.GetStatusSummary();
+        public string StatusFacilitySummary
+        {
+            get
+            {
+                if (MagicMailSystem.s_LastFacilityCount == 0)
+                {
+                    return L(
+                        StatusNoFacilitiesKey,
+                        "No postal facilities processed yet. Open a city and let the simulation run.");
+                }
+
+                return string.Format(
+                    L(
+                        StatusSummaryKey,
+                        "{0} post offices | {1} post-vans | {2} sorting buildings | {3} post trucks"),
+                    MagicMailSystem.s_LastPostOfficeCount,
+                    MagicMailSystem.s_LastPostVanCapacityTotal,
+                    MagicMailSystem.s_LastSortingFacilityCount,
+                    MagicMailSystem.s_LastPostTruckCapacityTotal);
+            }
+        }
 
         [SettingsUISection(kStatusTab, StatusSummaryGroup)]
-        public string StatusCityMailSummary =>
-            MagicMailSystem.GetStatusCityMail();
+        public string StatusCityMailSummary
+        {
+            get
+            {
+                if (MagicMailSystem.s_LastCityAccumulatedMail == 0 &&
+                    MagicMailSystem.s_LastCityProcessedMail == 0)
+                {
+                    return L(
+                        StatusCityMailNotReadyKey,
+                        "City mail stats not available yet. Open a city and let the simulation run.");
+                }
+
+                return string.Format(
+                    L(
+                        StatusCityMailKey,
+                        "{0} accumulated | {1} processed"),
+                    MagicMailSystem.s_LastCityAccumulatedMail.ToString("N0"),
+                    MagicMailSystem.s_LastCityProcessedMail.ToString("N0"));
+            }
+        }
 
         [SettingsUISection(kStatusTab, StatusActivityGroup)]
-        public string StatusLastActivity =>
-            MagicMailSystem.GetStatusActivity();
+        public string StatusLastActivity
+        {
+            get
+            {
+                if (MagicMailSystem.s_LastFacilityCount == 0)
+                {
+                    return L(
+                        StatusNoActivityKey,
+                        "No activity recorded yet.");
+                }
+
+                return string.Format(
+                    L(
+                        StatusActivityKey,
+                        "{0} local-mail pulls | {1} unsorted-mail pulls | {2} overflow cleanups"),
+                    MagicMailSystem.s_LastPostOfficeGets,
+                    MagicMailSystem.s_LastSortingGets,
+                    MagicMailSystem.s_LastOverflowClamps);
+            }
+        }
 
         // --------------------------------------------------------------------
         // ABOUT TAB: INFO
@@ -494,6 +559,21 @@ namespace MagicMail
         // --------------------------------------------------------------------
         // HELPERS
         // --------------------------------------------------------------------
+
+        /// <summary>
+        /// Looks up a localized string by key, falling back to English text if missing.</summary>
+        private static string L(string key, string fallback)
+        {
+            LocalizationDictionary? dict = GameManager.instance?.localizationManager?.activeDictionary;
+            if (dict != null &&
+                dict.TryGetValue(key, out var value) &&
+                !string.IsNullOrWhiteSpace(value))
+            {
+                return value;
+            }
+
+            return fallback;
+        }
 
         /// <summary>
         /// Opens a URL via Unity’s Application.OpenURL, ignoring failures.</summary>
